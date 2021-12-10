@@ -21,6 +21,11 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // adding automapper
+            services.AddAutoMapper(typeof(Startup));
+            
+            // adding in memory DataBase for EF
             services.AddDbContext<BreweryManagementContext>(opt =>
                opt.UseInMemoryDatabase("BreweryManagement"));
         }
