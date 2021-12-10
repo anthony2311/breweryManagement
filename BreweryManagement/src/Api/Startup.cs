@@ -28,6 +28,10 @@ namespace Api
             // adding in memory DataBase for EF
             services.AddDbContext<BreweryManagementContext>(opt =>
                opt.UseInMemoryDatabase("BreweryManagement"));
+
+            // manage dependency injection
+            services.AddScoped<IBeerService, BeerService>();
+            services.AddScoped<IBeerRepository, BeerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
