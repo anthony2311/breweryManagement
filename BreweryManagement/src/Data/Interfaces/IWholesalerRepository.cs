@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Data.Interfaces
 {
-    public interface IBeerRepository
+    public interface IWholesalerRepository
     {
-        IEnumerable<Beer> GetAll();
+        IEnumerable<Wholesaler> GetAll();
     }
 }

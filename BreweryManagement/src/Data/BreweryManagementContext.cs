@@ -21,6 +21,19 @@ namespace Data.Models
                 AlcoholDegree = 6.6,
                 Price = 2.20
             });
+
+            modelBuilder.Entity<Brewery>().HasData(new Brewery()
+            {
+                Id = 1,
+                Name = "Abbaye de Leffe"
+            });
+
+            modelBuilder.Entity<Wholesaler>().HasData(new Wholesaler()
+            {
+                Id = 1,
+                Name = "GeneDrinks"
+            });
+
         }
     }
 }

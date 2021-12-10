@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Domain.Interfaces
 {
-    public interface IBeerService
+    public interface IBreweryService
     {
-        List<Beer> Get();
+        List<Brewery> Get();
     }
 }

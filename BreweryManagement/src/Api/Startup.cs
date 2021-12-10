@@ -1,4 +1,4 @@
-using Api.Controllers;
+using Data.Interfaces;
 using Data.Models;
 using Data.Repositories;
 using Domain.Interfaces;
@@ -39,6 +39,10 @@ namespace Api
             // manage dependency injection
             services.AddScoped<IBeerService, BeerService>();
             services.AddScoped<IBeerRepository, BeerRepository>();
+            services.AddScoped<IBreweryService, BreweryService>();
+            services.AddScoped<IBreweryRepository, BreweryRepository>();
+            services.AddScoped<IWholesalerService, WholesalerService>();
+            services.AddScoped<IWholesalerRepository, WholesalerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

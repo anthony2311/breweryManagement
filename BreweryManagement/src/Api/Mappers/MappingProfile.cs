@@ -10,6 +10,8 @@ namespace Api.Mappers
         {
             // Add as many of these lines as you need to map your objects
             CreateMap<Beer, BeerDto>();
+            CreateMap<Brewery, BreweryDto>();
+            CreateMap<Wholesaler, WholesalerDto>();
         }
     }
 }

@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 namespace Data.Repositories
 {
-    public class BeerRepository : IBeerRepository
+    public class WholesalerRepository : IWholesalerRepository
     {
         private BreweryManagementContext _dbContext;
 
-        public BeerRepository(BreweryManagementContext dbContext)
+        public WholesalerRepository(BreweryManagementContext dbContext)
         {
             _dbContext = dbContext;
             // need to trigger this method to ensure seeding is called 
             _dbContext.Database.EnsureCreated();
         }
-        public IEnumerable<Beer> GetAll()
+        public IEnumerable<Wholesaler> GetAll()
         {
-            return _dbContext.Beers;
+            return _dbContext.Wholesaler;
         }
     }
 }
