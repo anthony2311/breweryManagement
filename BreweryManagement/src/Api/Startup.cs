@@ -1,4 +1,8 @@
-using Data.Access.Models;
+using Api.Controllers;
+using Data.Models;
+using Data.Repositories;
+using Domain.Interfaces;
+using Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +26,9 @@ namespace Api
         {
             services.AddControllers();
 
+            // adding swagger generation
+            services.AddSwaggerGen();
+
             // adding automapper
             services.AddAutoMapper(typeof(Startup));
             
@@ -37,6 +44,12 @@ namespace Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.)
+            app.UseSwaggerUI();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
