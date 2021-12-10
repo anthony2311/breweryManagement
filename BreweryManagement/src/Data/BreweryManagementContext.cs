@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Data.Models
 {
@@ -11,29 +12,44 @@ namespace Data.Models
         public DbSet<Beer> Beers { get; set; }
         public DbSet<Brewery> Brewery { get; set; }
         public DbSet<Wholesaler> Wholesaler { get; set; }
+        public DbSet<WholesalerStock> WholesalerStock { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Beer>().HasData(new Beer()
-            {
-                Id = 1,
-                Name = "Leffe Blonde",
-                AlcoholDegree = 6.6,
-                Price = 2.20
-            });
+            modelBuilder.Entity<Beer>()
+                .HasOne(b => b.Brewery)
+                .WithMany()
+                .IsRequired();
 
-            modelBuilder.Entity<Brewery>().HasData(new Brewery()
-            {
-                Id = 1,
-                Name = "Abbaye de Leffe"
-            });
+            modelBuilder.Entity<WholesalerStock>()
+                .HasKey(ws => new { ws.BeerId, ws.WholesalerId });
+            modelBuilder.Entity<WholesalerStock>()
+                .HasOne(ws => ws.Beer)
+                .WithMany(b => b.WholesalerStocks)
+                .HasForeignKey(ws => ws.BeerId);
+            modelBuilder.Entity<WholesalerStock>()
+                .HasOne(ws => ws.Wholesaler)
+                .WithMany(b => b.WholesalerStocks)
+                .HasForeignKey(ws => ws.WholesalerId);
 
-            modelBuilder.Entity<Wholesaler>().HasData(new Wholesaler()
+            // add sample on database
+            DataSample.GetWholesalers().ForEach(wholesaler =>
             {
-                Id = 1,
-                Name = "GeneDrinks"
+                modelBuilder.Entity<Wholesaler>().HasData(wholesaler);
             });
-
+            DataSample.GetBreweries().ForEach(brewery =>
+            {
+                modelBuilder.Entity<Brewery>().HasData(brewery);
+            });
+            DataSample.GetBeers().ForEach(beer =>
+            {
+                modelBuilder.Entity<Beer>().HasData(beer);
+            });
+            DataSample.GetWholesalerStocks().ForEach(wholesalerStock =>
+            {
+                modelBuilder.Entity<WholesalerStock>().HasData(wholesalerStock);
+            });
         }
+
     }
 }
