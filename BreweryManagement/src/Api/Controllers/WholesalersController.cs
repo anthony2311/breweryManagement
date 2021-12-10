@@ -25,5 +25,12 @@ namespace Api.Controllers
             List<Wholesaler> wholesalers = _wholesalerService.Get();
             return _mapper.Map<IEnumerable<WholesalerDto>>(wholesalers);
         }
+
+        [HttpGet("{id}/beers")]
+        public IEnumerable<BeerDto> GetWholesalerBeers(int id)
+        {
+            List<Beer> beers = _wholesalerService.GetWholesalerBeers(id);
+            return _mapper.Map<IEnumerable<BeerDto>>(beers);
+        }
     }
 }

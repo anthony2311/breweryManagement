@@ -1,6 +1,7 @@
 ﻿using Data.Models;
 using Data.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Data.Repositories
 {
@@ -17,6 +18,11 @@ namespace Data.Repositories
         public IEnumerable<Beer> GetAll()
         {
             return _dbContext.Beers;
+        }
+
+        public IEnumerable<Beer> GetByBreweryId(int id)
+        {
+            return _dbContext.Beers.Where(b=>b.BreweryId == id);
         }
     }
 }

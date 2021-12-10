@@ -6,5 +6,6 @@ namespace Domain.Interfaces
     public interface IBreweryService
     {
         List<Brewery> Get();
+        List<Beer> GetBreweryBeers(int id);
     }
 }
