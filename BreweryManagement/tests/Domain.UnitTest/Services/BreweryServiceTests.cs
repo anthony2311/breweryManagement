@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Data;
 using System.Linq;
 using System.Collections.Generic;
+using Domain.Exceptions;
 
 namespace Domain.UnitTest
 {
@@ -32,7 +33,7 @@ namespace Domain.UnitTest
         [Test]
         public void GetBreweryBeers_WithInvalidId_ShouldThrownException()
         {
-            Assert.Throws<KeyNotFoundException>(()=>_service.GetBreweryBeers(int.MaxValue));
+            Assert.Throws<HttpResponseException>(()=>_service.GetBreweryBeers(int.MaxValue));
         }
         [Test]
         public void GetBreweryBeers_WithvalidId_ShouldReturnAListOfBeer()

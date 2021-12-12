@@ -43,7 +43,6 @@ namespace Api.Controllers
         [HttpGet("{id}/beers")]
         public IEnumerable<BeerDto> GetWholesalerBeers(int id)
         {
-            // TODO : manage exception throw from service (with error middleware or try/catch)
             List<Beer> beers = _wholesalerService.GetWholesalerBeers(id);
             return _mapper.Map<IEnumerable<BeerDto>>(beers);
         }
@@ -56,7 +55,6 @@ namespace Api.Controllers
         [HttpPost("{id}/stock/{beerId}")]
         public void CreateWholesalerStock(int id, int beerId, [FromBody] int quantity)
         {
-            // TODO : manage exception throw from service (with error middleware or try/catch)
             _wholesalerService.CreateWholesalerStock(id, beerId, quantity);
         }
 
@@ -68,7 +66,6 @@ namespace Api.Controllers
         [HttpPut("{id}/stock/{beerId}")]
         public void UpdateWholesalerStock(int id, int beerId, [FromBody] int quantity)
         {
-            // TODO : manage exception throw from service (with error middleware or try/catch)
             _wholesalerService.UpdateWholesalerStock(id, beerId, quantity);
         }
 
@@ -86,7 +83,6 @@ namespace Api.Controllers
             {
                 return BadRequest("You have duplicate beer in your order");
             }
-            // TODO : manage exception throw from service (with error middleware or try/catch)
             return Ok(_wholesalerOrderService.OrderQuotation(id, order));
         }
 

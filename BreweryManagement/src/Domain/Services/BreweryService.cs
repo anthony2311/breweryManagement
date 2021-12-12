@@ -1,8 +1,10 @@
 ﻿using Data.Interfaces;
 using Data.Models;
+using Domain.Exceptions;
 using Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Domain.Services
 {
@@ -27,7 +29,7 @@ namespace Domain.Services
             var brewery =  _breweryRepository.GetById(id);
             if(brewery == null)
             {
-                throw new KeyNotFoundException($"Brewery with id {id} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Brewery with id {id} does not exist");
             }
             return _beerRepository.GetByBreweryId(id).ToList();
         }

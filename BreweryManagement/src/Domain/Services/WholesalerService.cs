@@ -1,10 +1,12 @@
 ﻿using Data.Interfaces;
 using Data.Models;
+using Domain.Exceptions;
 using Domain.Interfaces;
 using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Domain.Services
 {
@@ -30,7 +32,7 @@ namespace Domain.Services
         {
             if (!DoesWholesalerExist(id))
             {
-                throw new KeyNotFoundException($"Wholesaler with id {id} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {id} does not exist");
 
             }
             return _wholesalerRepository.GetWholesalerBeers(id).ToList();
@@ -41,11 +43,11 @@ namespace Domain.Services
         {
             if (!DoesWholesalerExist(wholesalerId))
             {
-                throw new KeyNotFoundException($"Wholesaler with id {wholesalerId} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {wholesalerId} does not exist");
             }
             if (!DoesBeerExist(beerId))
             {
-                throw new KeyNotFoundException($"Beer with id {beerId} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Beer with id {beerId} does not exist");
             }
             // TODO : add check on primary key before save
             _wholesalerStockRepository.CreateWholesalerStock(new WholesalerStock() { WholesalerId = wholesalerId, BeerId = beerId, quantity = quantity });
@@ -55,11 +57,11 @@ namespace Domain.Services
         {
             if (!DoesWholesalerExist(wholesalerId))
             {
-                throw new KeyNotFoundException($"Wholesaler with id {wholesalerId} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {wholesalerId} does not exist");
             }
             if (!DoesBeerExist(beerId))
             {
-                throw new KeyNotFoundException($"Beer with id {beerId} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Beer with id {beerId} does not exist");
             }
             // TODO : add check on primary key before save
             _wholesalerStockRepository.UpdateWholesalerStock(new WholesalerStock() { WholesalerId = wholesalerId, BeerId = beerId, quantity = quantity });

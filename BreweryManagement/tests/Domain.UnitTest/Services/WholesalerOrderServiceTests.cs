@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Domain.Models;
 using System.Collections.Generic;
 using System;
+using Domain.Exceptions;
 
 namespace Domain.UnitTest
 {
@@ -25,7 +26,7 @@ namespace Domain.UnitTest
         [Test]
         public void OrderQuotation_withInvalidWholesalerId_ShouldThrowAnException()
         {
-            Assert.Throws<KeyNotFoundException>(() => _service.OrderQuotation(int.MaxValue, new OrderDto()));
+            Assert.Throws<HttpResponseException>(() => _service.OrderQuotation(int.MaxValue, new OrderDto()));
         }
         [Test]
         public void OrderQuotation_withInvalidBeerId_ShouldThrowAnException()
@@ -40,7 +41,7 @@ namespace Domain.UnitTest
                     }
                 }
             };
-            Assert.Throws<ArgumentException>(()=>_service.OrderQuotation(1, orderDto));
+            Assert.Throws<HttpResponseException>(()=>_service.OrderQuotation(1, orderDto));
         }
         [Test]
         public void OrderQuotation_withoutSellingTheBeer_ShouldThrowAnException()
@@ -55,7 +56,7 @@ namespace Domain.UnitTest
                     }
                 }
             };
-            Assert.Throws<ArgumentException>(()=>_service.OrderQuotation(1, orderDto));
+            Assert.Throws<HttpResponseException>(()=>_service.OrderQuotation(1, orderDto));
         }
         [Test]
         public void OrderQuotation_withoutStock_ShouldThrowAnException()
@@ -71,7 +72,7 @@ namespace Domain.UnitTest
                     }
                 }
             };
-            Assert.Throws<ArgumentException>(()=>_service.OrderQuotation(1, orderDto));
+            Assert.Throws<HttpResponseException>(()=>_service.OrderQuotation(1, orderDto));
         }
         [Test]
         public void OrderQuotation_withLessThan10Beers_HaveNoDiscount()

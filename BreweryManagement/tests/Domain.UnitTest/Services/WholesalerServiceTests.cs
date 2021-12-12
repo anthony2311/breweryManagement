@@ -7,6 +7,7 @@ using Data;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Domain.Exceptions;
 
 namespace Domain.UnitTest
 {
@@ -33,7 +34,7 @@ namespace Domain.UnitTest
         [Test]
         public void GetWholesalerBeers_WithInvalidId_ShouldThrownException()
         {
-            Assert.Throws<KeyNotFoundException>(() => _service.GetWholesalerBeers(int.MaxValue));
+            Assert.Throws<HttpResponseException>(() => _service.GetWholesalerBeers(int.MaxValue));
         }
         [Test]
         public void GetWholesalerBeers_WithvalidId_ShouldReturnAListOfBeer()
@@ -56,8 +57,8 @@ namespace Domain.UnitTest
         [Test]
         public void CreateWholesalerStock_WithInvalidId_ShouldThrowAnException()
         {
-            Assert.Throws<KeyNotFoundException>(() => _service.CreateWholesalerStock(1, int.MaxValue, 10));
-            Assert.Throws<KeyNotFoundException>(() => _service.CreateWholesalerStock(int.MaxValue, 1, 10));
+            Assert.Throws<HttpResponseException>(() => _service.CreateWholesalerStock(1, int.MaxValue, 10));
+            Assert.Throws<HttpResponseException>(() => _service.CreateWholesalerStock(int.MaxValue, 1, 10));
         }
         [Test]
         public void UpdateWholesalerStock_ShouldChangeTheQuantity()
@@ -69,8 +70,8 @@ namespace Domain.UnitTest
         [Test]
         public void UpdateWholesalerStock_WithInvalidId_ShouldThrowAnException()
         {
-            Assert.Throws<KeyNotFoundException>(() => _service.UpdateWholesalerStock(1, int.MaxValue, 10));
-            Assert.Throws<KeyNotFoundException>(() => _service.UpdateWholesalerStock(int.MaxValue, 1, 10));
+            Assert.Throws<HttpResponseException>(() => _service.UpdateWholesalerStock(1, int.MaxValue, 10));
+            Assert.Throws<HttpResponseException>(() => _service.UpdateWholesalerStock(int.MaxValue, 1, 10));
         }
     }
 }

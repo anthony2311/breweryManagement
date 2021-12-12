@@ -1,9 +1,9 @@
 ﻿using Data.Interfaces;
+using Domain.Exceptions;
 using Domain.Interfaces;
 using Domain.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Domain.Services
 {
@@ -26,7 +26,7 @@ namespace Domain.Services
         {
             if (!_wholesalerRepository.Exist(id))
             {
-                throw new KeyNotFoundException($"Wholesaler with id {id} does not exist");
+                throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {id} does not exist");
             }
 
             // check available beers 
@@ -34,12 +34,12 @@ namespace Domain.Services
             {
                 if (!_wholesalerStockRepository.Exist(id, beer.BeerId))
                 {
-                    throw new ArgumentException($"Beer with id {beer.BeerId} is not sell by wholesaler {id}");
+                    throw new HttpResponseException(HttpStatusCode.BadRequest, $"Beer with id {beer.BeerId} is not sell by wholesaler {id}");
                 }
                 var currentBeerStock = _wholesalerStockRepository.GetStock(id, beer.BeerId);
                 if (currentBeerStock < beer.Quantity)
                 {
-                    throw new ArgumentException($"The current Wholesaler does not have enough beer {beer.BeerId} in stock. The current stock for this beer is {currentBeerStock}");
+                    throw new HttpResponseException(HttpStatusCode.BadRequest, $"The current Wholesaler does not have enough beer {beer.BeerId} in stock. The current stock for this beer is {currentBeerStock}");
                 }
             }
 

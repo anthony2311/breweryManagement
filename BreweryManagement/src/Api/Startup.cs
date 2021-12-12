@@ -1,3 +1,4 @@
+using Api.ActionFilters;
 using Data.Interfaces;
 using Data.Models;
 using Data.Repositories;
@@ -24,14 +25,15 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options =>
+                options.Filters.Add(new HttpResponseExceptionFilter()));
 
             // adding swagger generation
             services.AddSwaggerGen();
 
             // adding automapper
             services.AddAutoMapper(typeof(Startup));
-            
+
             // adding in memory DataBase for EF
             services.AddDbContext<BreweryManagementContext>(opt =>
                opt.UseInMemoryDatabase("BreweryManagement"));
