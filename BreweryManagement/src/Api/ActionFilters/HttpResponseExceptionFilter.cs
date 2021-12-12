@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Api.ActionFilters
 {
+    /// <summary>
+    /// Action filter to transform HttpResponseException to proper Http response
+    /// </summary>
     public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order { get; } = int.MaxValue - 10;

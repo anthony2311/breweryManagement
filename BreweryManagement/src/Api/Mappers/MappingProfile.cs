@@ -4,6 +4,9 @@ using Data.Models;
 
 namespace Api.Mappers
 {
+    /// <summary>
+    /// class use on Automapper to map Dto to entity objects
+    /// </summary>
     public class MappingProfile : Profile
     {
         public MappingProfile()

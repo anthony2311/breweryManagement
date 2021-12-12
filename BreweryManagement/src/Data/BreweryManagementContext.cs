@@ -16,11 +16,13 @@ namespace Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // manage many to on relation on Beer and Brewery
             modelBuilder.Entity<Beer>()
                 .HasOne(b => b.Brewery)
                 .WithMany(b=>b.Beers)
                 .IsRequired();
 
+            // manage many to many relation on table WholesalerStock
             modelBuilder.Entity<WholesalerStock>()
                 .HasKey(ws => new { ws.BeerId, ws.WholesalerId });
             modelBuilder.Entity<WholesalerStock>()
@@ -32,7 +34,7 @@ namespace Data.Models
                 .WithMany(b => b.WholesalerStocks)
                 .HasForeignKey(ws => ws.WholesalerId);
 
-            // add sample on database
+            // add data sample on database
             DataSample.GetWholesalers().ForEach(wholesaler =>
             {
                 modelBuilder.Entity<Wholesaler>().HasData(wholesaler);

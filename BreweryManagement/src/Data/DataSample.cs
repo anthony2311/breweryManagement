@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Data
 {
+    /// <summary>
+    /// Class containing multiple static list of datas for seed or mock database
+    /// </summary>
     public static class DataSample
     {
         public static List<Wholesaler> GetWholesalers()

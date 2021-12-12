@@ -22,6 +22,13 @@ namespace Domain.Services
             _wholesalerStockRepository = wholesalerStockRepository;
             _beerRepository = beerRepository;
         }
+        /// <summary>
+        /// Class calculating price for an order with discound depending on the number of beers
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        /// <exception cref="HttpResponseException"></exception>
         public OrderQuotationDto OrderQuotation(int id, OrderDto order)
         {
             if (!_wholesalerRepository.Exist(id))

@@ -25,6 +25,7 @@ namespace Api.Controllers
             List<Brewery> breweries = _breweryService.Get();
             return _mapper.Map<IEnumerable<BreweryDto>>(breweries);
         }
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
