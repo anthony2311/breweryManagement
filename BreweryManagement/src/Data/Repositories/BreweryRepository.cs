@@ -30,6 +30,11 @@ namespace Data.Repositories
             }
         }
 
+        public bool Exist(int breweryId)
+        {
+            return _dbContext.Brewery.Any(b => b.Id == breweryId);
+        }
+
         public IEnumerable<Brewery> GetAll()
         {
             return _dbContext.Brewery;

@@ -19,7 +19,7 @@ namespace Domain.UnitTest
                 .UseInMemoryDatabase(databaseName: "BeerServiceTests")
                 .Options;
             _dbContext = new BreweryManagementContext(options);
-            _service = new BeerService(new BeerRepository(_dbContext));
+            _service = new BeerService(new BeerRepository(_dbContext), new BreweryRepository(_dbContext));
         }
         [Test]
         public void Get_shouldReturnAllBeers()

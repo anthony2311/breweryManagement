@@ -8,5 +8,6 @@ namespace Data.Interfaces
         IEnumerable<Brewery> GetAll();
         Brewery GetById(int id);
         void Delete(int id);
+        bool Exist(int breweryId);
     }
 }
