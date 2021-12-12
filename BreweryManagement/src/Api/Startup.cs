@@ -40,10 +40,11 @@ namespace Api
 
             // manage dependency injection
             services.AddScoped<IBeerService, BeerService>();
-            services.AddScoped<IBeerRepository, BeerRepository>();
             services.AddScoped<IBreweryService, BreweryService>();
-            services.AddScoped<IBreweryRepository, BreweryRepository>();
             services.AddScoped<IWholesalerService, WholesalerService>();
+            services.AddScoped<IWholesalerOrderService, WholesalerOrderService>();
+            services.AddScoped<IBreweryRepository, BreweryRepository>();
+            services.AddScoped<IBeerRepository, BeerRepository>();
             services.AddScoped<IWholesalerRepository, WholesalerRepository>();
             services.AddScoped<IWholesalerStockRepository, WholesalerStockRepository>();
         }
