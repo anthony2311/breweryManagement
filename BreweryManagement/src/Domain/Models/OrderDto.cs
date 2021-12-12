@@ -8,7 +8,7 @@ namespace Domain.Models
     }    
     public class OrderQuotationDto : OrderDto
     {
-        public double price { get; set; }
+        public double Price { get; set; }
     }
     public class OrderQuotationBeer
     {

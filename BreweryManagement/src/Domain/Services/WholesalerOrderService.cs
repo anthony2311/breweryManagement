@@ -45,7 +45,7 @@ namespace Domain.Services
 
             var response = new OrderQuotationDto();
             response.Beers = order.Beers;
-            response.price = CalculateOrderPrice(order);
+            response.Price = CalculateOrderPrice(order);
             return response;
         }
 
