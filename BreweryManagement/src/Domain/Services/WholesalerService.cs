@@ -37,8 +37,6 @@ namespace Domain.Services
 
         }
 
-  
-
         public void CreateWholesalerStock(int wholesalerId, int beerId, int quantity)
         {
             if (!DoesWholesalerExist(wholesalerId))

@@ -99,7 +99,7 @@ namespace Data
                 {
                     WholesalerId = 1,
                     BeerId = 1,
-                    quantity = 10
+                    quantity = 50
                 },
                 new WholesalerStock()
                 {
