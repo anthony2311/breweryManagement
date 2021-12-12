@@ -22,6 +22,11 @@ namespace Data.Repositories
             _dbContext.SaveChanges();
         }
 
+        public bool Exist(int beerId)
+        {
+            return _dbContext.Beers.Any(b => b.Id == beerId);
+        }
+
         public IEnumerable<Beer> GetAll()
         {
             return _dbContext.Beers;

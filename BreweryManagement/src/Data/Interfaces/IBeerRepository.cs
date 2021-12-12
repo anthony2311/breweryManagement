@@ -10,5 +10,6 @@ namespace Data.Interfaces
         void Create(Beer beer);
         Beer getById(int id);
         double GetBeerPrice(int beerId);
+        bool Exist(int beerId);
     }
 }

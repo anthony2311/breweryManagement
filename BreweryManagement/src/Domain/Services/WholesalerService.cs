@@ -30,7 +30,7 @@ namespace Domain.Services
 
         public List<Beer> GetWholesalerBeers(int id)
         {
-            if (!DoesWholesalerExist(id))
+            if (!_wholesalerRepository.Exist(id))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {id} does not exist");
 
@@ -41,11 +41,11 @@ namespace Domain.Services
 
         public void CreateWholesalerStock(int wholesalerId, int beerId, int quantity)
         {
-            if (!DoesWholesalerExist(wholesalerId))
+            if (!_wholesalerRepository.Exist(wholesalerId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {wholesalerId} does not exist");
             }
-            if (!DoesBeerExist(beerId))
+            if (!_beerRepository.Exist(beerId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound, $"Beer with id {beerId} does not exist");
             }
@@ -55,11 +55,11 @@ namespace Domain.Services
 
         public void UpdateWholesalerStock(int wholesalerId, int beerId, int quantity)
         {
-            if (!DoesWholesalerExist(wholesalerId))
+            if (!_wholesalerRepository.Exist(wholesalerId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound, $"Wholesaler with id {wholesalerId} does not exist");
             }
-            if (!DoesBeerExist(beerId))
+            if (!_beerRepository.Exist(beerId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound, $"Beer with id {beerId} does not exist");
             }
@@ -67,15 +67,5 @@ namespace Domain.Services
             _wholesalerStockRepository.UpdateWholesalerStock(new WholesalerStock() { WholesalerId = wholesalerId, BeerId = beerId, quantity = quantity });
         }
 
-        private bool DoesWholesalerExist(int wholesalerId)
-        {
-            var wholesaler = _wholesalerRepository.GetById(wholesalerId);
-            return wholesaler != null;
-        }
-        private bool DoesBeerExist(int beerId)
-        {
-            var beer = _beerRepository.getById(beerId);
-            return beer != null;
-        }
     }
 }
