@@ -7,5 +7,7 @@ namespace Domain.Interfaces
     {
         List<Wholesaler> Get();
         List<Beer> GetWholesalerBeers(int id);
+        void CreateWholesalerStock(int wholesalerId, int beerId, int quantity);
+        void UpdateWholesalerStock(int id, int beerId, int quantity);
     }
 }

@@ -43,6 +43,7 @@ namespace Api
             services.AddScoped<IBreweryRepository, BreweryRepository>();
             services.AddScoped<IWholesalerService, WholesalerService>();
             services.AddScoped<IWholesalerRepository, WholesalerRepository>();
+            services.AddScoped<IWholesalerStockRepository, WholesalerStockRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -31,5 +31,10 @@ namespace Data.Repositories
         {
             return _dbContext.Beers.Where(b=>b.BreweryId == id);
         }
+
+        public Beer getById(int id)
+        {
+            return _dbContext.Beers.FirstOrDefault(b => b.Id == id);
+        }
     }
 }
