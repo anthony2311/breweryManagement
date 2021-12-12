@@ -31,5 +31,9 @@ namespace Domain.Services
             }
             return _beerRepository.GetByBreweryId(id).ToList();
         }
+        public void Delete(int id)
+        {
+            _breweryRepository.Delete(id);
+        }
     }
 }

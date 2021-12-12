@@ -7,5 +7,6 @@ namespace Domain.Interfaces
     {
         List<Brewery> Get();
         List<Beer> GetBreweryBeers(int id);
+        void Delete(int id);
     }
 }

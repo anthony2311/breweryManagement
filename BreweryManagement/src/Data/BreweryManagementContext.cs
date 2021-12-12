@@ -18,7 +18,7 @@ namespace Data.Models
         {
             modelBuilder.Entity<Beer>()
                 .HasOne(b => b.Brewery)
-                .WithMany()
+                .WithMany(b=>b.Beers)
                 .IsRequired();
 
             modelBuilder.Entity<WholesalerStock>()
