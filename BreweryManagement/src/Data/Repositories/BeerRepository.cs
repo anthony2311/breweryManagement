@@ -27,6 +27,11 @@ namespace Data.Repositories
             return _dbContext.Beers;
         }
 
+        public double GetBeerPrice(int beerId)
+        {
+            return _dbContext.Beers.First(b => b.Id == beerId).Price;
+        }
+
         public IEnumerable<Beer> GetByBreweryId(int id)
         {
             return _dbContext.Beers.Where(b=>b.BreweryId == id);

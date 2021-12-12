@@ -9,5 +9,6 @@ namespace Data.Interfaces
         IEnumerable<Beer> GetByBreweryId(int id);
         void Create(Beer beer);
         Beer getById(int id);
+        double GetBeerPrice(int beerId);
     }
 }

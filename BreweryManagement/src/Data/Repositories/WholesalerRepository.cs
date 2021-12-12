@@ -42,5 +42,10 @@ namespace Data.Repositories
             entity.quantity = wholesalerStock.quantity;
             _dbContext.SaveChanges();
         }
+
+        public bool Exist(int id)
+        {
+            return _dbContext.Wholesaler.Any(ws => ws.Id == id);
+        }
     }
 }

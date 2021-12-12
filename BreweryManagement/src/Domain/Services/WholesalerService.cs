@@ -1,6 +1,8 @@
 ﻿using Data.Interfaces;
 using Data.Models;
 using Domain.Interfaces;
+using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,6 +77,5 @@ namespace Domain.Services
             var beer = _beerRepository.getById(beerId);
             return beer != null;
         }
-
     }
 }

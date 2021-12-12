@@ -34,6 +34,7 @@ namespace Api.Controllers
         [HttpGet("{id}/beers")]
         public IEnumerable<BeerDto> GetBreweryBeers(int id)
         {
+            // TODO : manage exception throw from service (with error middleware or try/catch)
             List<Beer> beers = _breweryService.GetBreweryBeers(id);
             return _mapper.Map<IEnumerable<BeerDto>>(beers);
         }

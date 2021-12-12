@@ -8,5 +8,6 @@ namespace Data.Interfaces
         IEnumerable<Wholesaler> GetAll();
         Wholesaler GetById(int id);
         IEnumerable<Beer> GetWholesalerBeers(int id);
+        bool Exist(int id);
     }
 }

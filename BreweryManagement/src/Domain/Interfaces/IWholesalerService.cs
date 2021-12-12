@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Domain.Models;
 using System.Collections.Generic;
 
 namespace Domain.Interfaces
