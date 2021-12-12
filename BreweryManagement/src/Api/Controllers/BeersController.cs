@@ -25,5 +25,12 @@ namespace Api.Controllers
             List<Beer> beers = _beerService.Get();
             return _mapper.Map<IEnumerable<BeerDto>>(beers);
         }
+
+        [HttpPost]
+        public void Create([FromBody] BeerDto beerDto)
+        {
+            var beer = _mapper.Map<Beer>(beerDto);
+            _beerService.Create(beer);
+        }
     }
 }

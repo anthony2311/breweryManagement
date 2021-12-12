@@ -15,6 +15,11 @@ namespace Domain.Services
             _beerRepository = beerRepository;
         }
 
+        public void Create(Beer beer)
+        {
+            _beerRepository.Create(beer);
+        }
+
         public List<Beer> Get()
         {
             return _beerRepository.GetAll().ToList();

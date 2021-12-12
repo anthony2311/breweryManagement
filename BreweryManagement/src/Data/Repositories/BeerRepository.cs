@@ -15,6 +15,13 @@ namespace Data.Repositories
             // need to trigger this method to ensure seeding is called 
             _dbContext.Database.EnsureCreated();
         }
+
+        public void Create(Beer beer)
+        {
+            _dbContext.Beers.Add(beer);
+            _dbContext.SaveChanges();
+        }
+
         public IEnumerable<Beer> GetAll()
         {
             return _dbContext.Beers;

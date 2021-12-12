@@ -6,5 +6,6 @@ namespace Domain.Interfaces
     public interface IBeerService
     {
         List<Beer> Get();
+        void Create(Beer beer);
     }
 }
