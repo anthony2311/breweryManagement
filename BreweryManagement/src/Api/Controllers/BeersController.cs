@@ -29,7 +29,6 @@ namespace Api.Controllers
         [HttpPost]
         public void Create([FromBody] BeerDto beerDto)
         {
-            // TODO : add attribute validation on dto + add check here
             var beer = _mapper.Map<Beer>(beerDto);
             _beerService.Create(beer);
         }
